@@ -10,7 +10,7 @@ export const Pages = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (user: any) => {
-    dispatch(registerUserAction(user));
+    dispatch(registerUserAction({ sign_up_user_params: user }));
   };
   return (
     <div>
