@@ -1,12 +1,4 @@
-const petCounter = (state = 10, action: any) => {
-  switch (action.type) {
-    case "PET_INCREASED":
-      return state + action.payload;
-    case "PET_DECREASED":
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
-export default petCounter;
+import { combineReducers } from "redux";
+import register from "../ducks/signup/reducer";
+const rootReducer = combineReducers({ register });
+export default rootReducer;
