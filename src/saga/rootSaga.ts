@@ -1,7 +1,6 @@
-import { all } from "redux-saga/effects";
-// TODO
-// import watcherUserSaga from "./handlers/fetchUsers";
+import { fork } from "redux-saga/effects";
+import watchUserAuthentication from "./watcher";
 
 export default function* rootSaga() {
-  //   yield all([watcherUserSaga()]);
+  yield fork(watchUserAuthentication);
 }
