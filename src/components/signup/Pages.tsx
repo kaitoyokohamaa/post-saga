@@ -1,6 +1,6 @@
 import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import { registerUserAction } from "../../ducks/signup/actions";
 export const Pages = () => {
   const dispatch = useDispatch();
