@@ -1,5 +1,4 @@
 export const registerUserService = async (request: any) => {
-  console.log(request.user);
   const REGISTER_API_ENDPOINT = `${process.env.NEXT_PUBLIC_API_KEY}/sign_up`;
   const parameters = {
     method: "POST",
