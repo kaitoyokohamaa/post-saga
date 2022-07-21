@@ -1,8 +1,8 @@
-import { REGISTER_USER } from "./name";
+import { SIGNUP_USER } from "./name";
 import { signupResponseType } from "./type";
-export const registerUserAction = (user: signupResponseType) => {
+export const signupUserAction = (user: signupResponseType) => {
   return {
-    type: REGISTER_USER,
+    type: SIGNUP_USER,
     user,
   };
 };
