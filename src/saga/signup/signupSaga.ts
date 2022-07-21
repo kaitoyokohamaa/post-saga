@@ -1,5 +1,5 @@
 import { put, call } from "redux-saga/effects";
-import { signupUserService } from "../../services/authenticationService";
+import { signupUserService } from "../../services/signupService";
 import { signupResponseType } from "../../ducks/signup/type";
 import {
   SIGNUP_USER_SUCCESS,
