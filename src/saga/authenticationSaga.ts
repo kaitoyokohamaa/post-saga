@@ -1,20 +1,22 @@
 import { put, call } from "redux-saga/effects";
-import { registerUserService } from "../services/authenticationService";
+import { signupUserService } from "../services/authenticationService";
 import { signupResponseType } from "../ducks/signup/type";
 import {
-  REGISTER_USER_SUCCESS,
-  REGISTER_USER_ERROR,
+  SIGNUP_USER_SUCCESS,
+  SIGNUP_USER_ERROR,
+  SIGNUP_USER,
 } from "../ducks/signup/name";
 
-export function* registerSaga(payload: signupResponseType) {
-  console.log(payload);
+type Props = {
+  type: typeof SIGNUP_USER;
+  user: signupResponseType;
+};
+
+export function* signupSaga(payload: Props) {
   try {
-    const response: signupResponseType = yield call(
-      registerUserService,
-      payload
-    );
-    yield [put({ type: REGISTER_USER_SUCCESS, response })];
+    const response: signupResponseType = yield call(signupUserService, payload);
+    yield [put({ type: SIGNUP_USER_SUCCESS, response })];
   } catch (error) {
-    yield put({ type: REGISTER_USER_ERROR, error });
+    yield put({ type: SIGNUP_USER_ERROR, error });
   }
 }
