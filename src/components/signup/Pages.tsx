@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { signupUserAction } from "../../ducks/signup/actions";
 import { signupResponseType } from "../../ducks/signup/type";
@@ -9,8 +9,11 @@ export const Pages = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onSubmit = (user: any) => {
+  } = useForm<signupResponseType["sign_up_user_params"]>();
+
+  const onSubmit: SubmitHandler<signupResponseType["sign_up_user_params"]> = (
+    user
+  ) => {
     dispatch(signupUserAction({ sign_up_user_params: user }));
   };
   return (
