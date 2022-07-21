@@ -4,6 +4,6 @@ export type signupResponseType = {
     bio: string;
     email: string;
     password: string;
-    psssword_confirmation: string;
+    password_confirmation: string;
   };
 };
