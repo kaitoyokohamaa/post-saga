@@ -16,6 +16,7 @@ export const Pages = () => {
   ) => {
     dispatch(signupUserAction({ sign_up_user_params: user }));
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
