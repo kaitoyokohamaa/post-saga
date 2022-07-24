@@ -1,8 +1,13 @@
 import { expectSaga } from "redux-saga-test-plan";
-import { SIGNUP_USER, SIGNUP_USER_SUCCESS } from "../../ducks/signup/name";
+import {
+  SIGNUP_USER,
+  SIGNUP_USER_ERROR,
+  SIGNUP_USER_SUCCESS,
+} from "../../ducks/signup/name";
 import { signupSaga } from "./signupSaga";
 import { signupUserService } from "../../services/signupService";
 import { call } from "redux-saga/effects";
+import { throwError } from "redux-saga-test-plan/providers";
 const mockUser = {
   type: SIGNUP_USER as typeof SIGNUP_USER,
   user: {
@@ -29,5 +34,14 @@ describe("正常系", () => {
     expectSaga(signupSaga, mockUser)
       .provide([[call(signupUserService, mockUser), mockApiResponse]])
       .put({ type: SIGNUP_USER_SUCCESS, response: mockApiResponse })
+      .run());
+});
+
+describe("準正常系", () => {
+  const error = new Error("error");
+  it("準正常", () =>
+    expectSaga(signupSaga, mockUser)
+      .provide([[call(signupUserService, mockUser), throwError(error)]])
+      .put({ type: SIGNUP_USER_ERROR, error })
       .run());
 });

@@ -10,6 +10,6 @@ export const signupUserService = async (request: any) => {
   };
 
   const data = await fetch(SIGNUP_API_ENDPOINT, parameters);
-  console.log(await data.json());
+
   return data.json();
 };
