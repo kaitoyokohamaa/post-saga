@@ -1,8 +1,8 @@
 import { expectSaga } from "redux-saga-test-plan";
-import { SIGNUP_USER } from "../../ducks/signup/name";
+import { SIGNUP_USER, SIGNUP_USER_SUCCESS } from "../../ducks/signup/name";
 import { signupSaga } from "./signupSaga";
 import { signupUserService } from "../../services/signupService";
-import * as matchers from "redux-saga-test-plan/matchers";
+import { call } from "redux-saga/effects";
 const mockUser = {
   type: SIGNUP_USER as typeof SIGNUP_USER,
   user: {
@@ -25,10 +25,9 @@ const mockApiResponse = {
   updated_at: "2022-07-23T06:24:13.694Z",
 };
 describe("正常系", () => {
-  it("正常", () => {
+  it("正常", () =>
     expectSaga(signupSaga, mockUser)
-      .provide([matchers.call.fn(signupUserService), mockApiResponse])
-      .returns(mockApiResponse)
-      .run();
-  });
+      .provide([[call(signupUserService, mockUser), mockApiResponse]])
+      .put({ type: SIGNUP_USER_SUCCESS, response: mockApiResponse })
+      .run());
 });

@@ -10,7 +10,6 @@ import { signupActionType } from "./type";
 export function* signupSaga(payload: signupActionType) {
   try {
     const response: signupResponseType = yield call(signupUserService, payload);
-
     yield put({ type: SIGNUP_USER_SUCCESS, response });
   } catch (error) {
     yield put({ type: SIGNUP_USER_ERROR, error });
