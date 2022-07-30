@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { signupUserAction } from "../../ducks/signup/actions";
 import { signupResponseType } from "../../ducks/signup/type";
+
 export const Pages = () => {
   const dispatch = useDispatch();
   const {
